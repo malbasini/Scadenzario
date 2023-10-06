@@ -38,4 +38,4 @@
         COMANDI DOCKER
 
         docker compose build --compilazione
-        docker compose up --esecuzione
+        docker compose up --esecuzione# Scadenzario
