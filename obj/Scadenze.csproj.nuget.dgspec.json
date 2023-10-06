@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/marcoalbasini/Documents/Software/Scadenzario-azure/Scadenze.csproj": {}
+    "/Users/marcoalbasini/Documents/Software/Scadenzario-container/Scadenze.csproj": {}
   },
   "projects": {
-    "/Users/marcoalbasini/Documents/Software/Scadenzario-azure/Scadenze.csproj": {
+    "/Users/marcoalbasini/Documents/Software/Scadenzario-container/Scadenze.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/marcoalbasini/Documents/Software/Scadenzario-azure/Scadenze.csproj",
+        "projectUniqueName": "/Users/marcoalbasini/Documents/Software/Scadenzario-container/Scadenze.csproj",
         "projectName": "Scadenze",
-        "projectPath": "/Users/marcoalbasini/Documents/Software/Scadenzario-azure/Scadenze.csproj",
+        "projectPath": "/Users/marcoalbasini/Documents/Software/Scadenzario-container/Scadenze.csproj",
         "packagesPath": "/Users/marcoalbasini/.nuget/packages/",
-        "outputPath": "/Users/marcoalbasini/Documents/Software/Scadenzario-azure/obj/",
+        "outputPath": "/Users/marcoalbasini/Documents/Software/Scadenzario-container/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/marcoalbasini/.nuget/NuGet/NuGet.Config"
@@ -97,15 +97,33 @@
               "target": "Package",
               "version": "[7.0.11, )"
             },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[7.0.4, )"
-            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[7.0.10, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
+            "MySql.Data.EntityFramework": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
+            "MySql.Data.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.22, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "jQuery.Validation": {
               "target": "Package",

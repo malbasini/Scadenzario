@@ -1,4 +1,5 @@
 using System;
+using System.Data.Common;
 using AspNetCore.ReCaptcha;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySql.EntityFrameworkCore.Infrastructure;
 using Scadenze.Customizations.Identity;
 using Scadenze.Customizations.ModelBinders;
 using Scadenze.Models.Options;
@@ -17,7 +19,7 @@ using Scadenze.Models.Services.Application;
 using Scadenze.Models.Services.Application.Beneficiari;
 using Scadenze.Models.Services.Application.Scadenze;
 using Scadenze.Models.Services.Infrastructure;
-
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace Scadenze
 {
@@ -49,6 +51,10 @@ namespace Scadenze
                 Options.CacheProfiles.Add("Home",homeProfile);
                 Configuration.Bind("ResponseCache:Home", homeProfile);
             });
+            services.AddSingleton<IConfiguration>(provider => new ConfigurationBuilder()
+            .AddJsonFile("environment.json", optional: false, reloadOnChange: false)
+            .Build());
+            
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddTransient<IScadenzeService,EFCoreScadenzaService>();
@@ -57,7 +63,7 @@ namespace Scadenze
             services.AddTransient<ICachedScadenzaService,MemoryCacheScadenzaService>();
             services.AddTransient<ICachedBeneficiarioService, MemoryCacheBeneficiarioService>();
             IServiceCollection serviceCollection = services.AddDbContext<ApplicationDbContext>(
-                   optionsBuilder => optionsBuilder.UseSqlServer(connectionString));
+                   optionsBuilder => optionsBuilder.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString)));
             
             services.AddDefaultIdentity<IdentityUser>(options => {
                 options.Password.RequireDigit = true;
@@ -125,7 +131,6 @@ namespace Scadenze
             {
                 app.UseExceptionHandler("/Error");
             }
-            SeedData.Initialize(app.ApplicationServices);
             app.UseStaticFiles();
             //Endpoint routing Middleware
             app.UseRouting();
@@ -153,18 +158,5 @@ namespace Scadenze
 
             
         }
-    }
-    public static class SeedData
-    {
-        public static void Initialize(IServiceProvider serviceProvider)
-        {
-            using (var serviceScope = serviceProvider.CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-                // auto migration
-                context.Database.Migrate();
-            }
-        }
-
     }
 }
