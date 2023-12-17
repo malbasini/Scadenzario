@@ -40,3 +40,4 @@
         docker compose build --compilazione
         docker compose up --esecuzione# Scadenzario
 # Scadenzario
+# Scadenzario
