@@ -1,8 +1,10 @@
+using System.Configuration;
 using AspNetCore.ReCaptcha;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyCourse.Customizations.Identity;
+using Scadenzario.Customizations.Identity;
 using Scadenzario.Areas.Identity.Data;
 using Scadenzario.Customizations.Identity;
 using Scadenzario.Models.Entity;
@@ -15,11 +17,16 @@ using Scadenzario.Models.Services.Applications.Scadenze;
 using Scadenzario.Models.Services.Infrastructure;
 using Scadenze.Customizations.ModelBinders;
 using Scdenzario.Models.Options;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using MySql.EntityFrameworkCore.Infrastructure;
 
-            var builder = WebApplication.CreateBuilder(args);
 
+var builder = WebApplication.CreateBuilder(args);
+            builder.Configuration.AddJsonFile("environment.json");
             // Add services to the container.
-
+            builder.Services.AddSingleton<IConfiguration>(provider => new ConfigurationBuilder()
+                .AddJsonFile("environment.json", optional: false, reloadOnChange: false)
+                .Build());
             String connectionString = builder.Configuration.GetValue<String>("ConnectionStrings:Default");
             builder.Services.AddResponseCaching();
             builder.Services.AddReCaptcha(builder.Configuration.GetSection("ReCaptcha"));
@@ -39,7 +46,7 @@ using Scdenzario.Models.Options;
             builder.Services.AddTransient<IBeneficiariService, EfCoreBeneficiarioService>();
             builder.Services.AddTransient<ICachedBeneficiarioService, MemoryCacheBeneficiarioService>();
             IServiceCollection serviceCollection = builder.Services.AddDbContext<ScadenzarioIdentityDbContext>(
-                optionsBuilder => optionsBuilder.UseSqlServer(connectionString));
+                optionsBuilder => optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
             builder.Services.AddTransient<IScadenzeService,EfCoreScadenzeService>();
             builder.Services.AddTransient<IRicevuteService,EFCoreRicevutaService>();
             builder.Services.AddTransient<ICachedScadenzeService,MemoryCacheScadenzeService>();

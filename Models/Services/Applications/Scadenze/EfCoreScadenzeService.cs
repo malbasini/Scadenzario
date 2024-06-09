@@ -173,9 +173,9 @@ namespace Scadenzario.Models.Services.Application.Scadenze
             {
                 await _dbContext.SaveChangesAsync();
             }
-            catch (DbUpdateException exc)
+            catch (Exception exc)
             {
-                throw new DbUpdateException(exc.Message);
+                throw new Exception(exc.Message);
             }
             return ScadenzaDetailViewModelInfo.FromEntity(scadenza);
         }
