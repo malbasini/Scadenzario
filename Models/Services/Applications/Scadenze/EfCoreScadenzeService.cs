@@ -131,8 +131,8 @@ namespace Scadenzario.Models.Services.Application.Scadenze
             IQueryable<ScadenzaDetailViewModel> queryLinq = _dbContext.Scadenze
                 .AsNoTracking()
                 .Where(s => s.IDScadenza == id)
-                .Include(scadenza=>scadenza.Ricevute)
                 .Where(z=> z.IDUser == IdUser)
+                .Include(scadenza=>scadenza.Ricevute)
                 .Select(s => ScadenzaDetailViewModel.FromEntity(s)); //Usando metodi statici come FromEntity, la query potrebbe essere inefficiente. Mantenere il mapping nella lambda oppure usare un extension method personalizzato
 
             ScadenzaDetailViewModel viewModel = await queryLinq.FirstOrDefaultAsync();

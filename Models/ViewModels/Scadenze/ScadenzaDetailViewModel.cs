@@ -18,7 +18,7 @@ namespace Scadenzario.Models.ViewModels.Scadenze
         public int? GiorniRitardo { get; set; }
         [DataType(DataType.Date)]
         public DateTime? DataPagamento { get; set; }
-        public List<RicevutaViewModel> Ricevute { get; set; } = new List<RicevutaViewModel>();
+        public List<RicevutaViewModel> Ricevute { get; set; } = new();
 
         public static ScadenzaDetailViewModel FromEntity(Scadenza scadenza)
         {
