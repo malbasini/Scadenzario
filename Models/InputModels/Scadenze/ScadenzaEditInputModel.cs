@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Scadenzario.Models.Entities;
 using Scadenzario.Models.ViewModels.Ricevute;
-using Scadenze.Controllers;
+using Scadenzario.Controllers;
 
 namespace Scadenzario.Models.InputModels.Scadenze
 {

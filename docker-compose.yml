@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.4'
 volumes:
   datafile:
 services:
@@ -11,7 +11,8 @@ services:
     volumes:
       - datafile:/var/lib/mysql
     networks:
-      - default
+      static-network:
+        ipv4_address: 172.20.128.2
     restart: always
   Scadenze:
     image: aspnetapp
@@ -24,6 +25,9 @@ services:
     ports:
       - "8000:80"
       - "8001:443"
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.3
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
@@ -31,3 +35,8 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/${NOME_CERTIFICATO}.pfx
     volumes:
       - ~/.aspnet/https:/https:ro
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

@@ -10533,6 +10533,7 @@
       "packagesPath": "/Users/marcoalbasini/.nuget/packages/",
       "outputPath": "/Users/marcoalbasini/Documents/Software/Scadenzario Container/obj/",
       "projectStyle": "PackageReference",
+      "UsingMicrosoftNETSdk": false,
       "configFilePaths": [
         "/Users/marcoalbasini/.nuget/NuGet/NuGet.Config"
       ],

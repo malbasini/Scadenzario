@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-namespace Scadenze.Controllers
+namespace Scadenzario.Controllers
 {
      [Authorize]
     public class HomeController : Controller
@@ -12,5 +12,11 @@ namespace Scadenze.Controllers
             ViewData["Title"]="Home Page".ToUpper();
             return View();
         }  
+        
+        public IActionResult Privacy()
+        {
+            ViewData["Title"]="Home Page".ToUpper();
+            return View();
+        }
     }
 }

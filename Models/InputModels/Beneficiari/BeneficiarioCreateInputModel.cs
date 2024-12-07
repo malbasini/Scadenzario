@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Scadenzario.Controllers;
-using Scadenze.Controllers;
+using Scadenzario.Controllers;
 
 namespace Scadenzario.Models.InputModels.Beneficiari;
 

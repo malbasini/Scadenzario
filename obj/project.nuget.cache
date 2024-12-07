@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GIj/v1bdL2ZVjj41au5iYsD9pjjDbKj2t5vbfwLkXHmDe8LIGIdZpu3GxLkBlsm3IX5S605M7YJrosTv0iR/WQ==",
+  "dgSpecHash": "cKsvBAVUKiw=",
   "success": true,
-  "projectFilePath": "/Users/marcoalbasini/Documents/Software/Scadenzario container/Scadenzario.csproj",
+  "projectFilePath": "/Users/marcoalbasini/Documents/Software/Scadenzario Container/Scadenzario.csproj",
   "expectedPackageFiles": [
     "/Users/marcoalbasini/.nuget/packages/anglesharp/0.17.1/anglesharp.0.17.1.nupkg.sha512",
     "/Users/marcoalbasini/.nuget/packages/anglesharp.css/0.17.0/anglesharp.css.0.17.0.nupkg.sha512",
